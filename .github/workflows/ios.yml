@@ -9,6 +9,7 @@ jobs:
     strategy:
      matrix:
       xcode-version: [13.2, 12.5.1]
+      swift-version: [5.3, 5.5]
     env:
      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode-version }}.app
     
@@ -23,42 +24,20 @@ jobs:
       - name: Install dependencies in Gemfile
         run: gem install fastlane
       
-      - name:  Unit Tests, using Swift 4.0
+      - name:  Unit Tests, using Swift ${{ matrix.swift-version }}
         run: |
           fastlane scan \
             --device "iPhone SE" \
-            --xcargs "SWIFT_VERSION=4.0" \
+            --xcargs "SWIFT_VERSION=${{ matrix.swift-version }}" \
             --code_coverage \
             --output_directory output/scan 
       
-      - name:  Unit Tests, using Swift 4.2
-        run: |
-           fastlane scan \
-             --device "iPhone 8" \
-             --xcargs "SWIFT_VERSION=4.2" \
-             --code_coverage \
-             --output_directory output/scan
+#       - name:  Unit Tests, using Swift 5.5
+#         run: |
+#            fastlane scan \
+#              --device "iPhone 8" \
+#              --xcargs "SWIFT_VERSION=4.2" \
+#              --code_coverage \
+#              --output_directory output/scan
 
-      - name:  Unit Tests, using Swift 5.0
-        run: |
-         fastlane scan \
-           --device "iPhone X" \
-           --xcargs "SWIFT_VERSION=5.0" \
-           --code_coverage \
-           --output_directory output/scan
-      
-      - name:  Unit Tests, using Swift 5.1
-        run: |
-           fastlane scan \
-             --device ["iPhone 6", "iPhone 11"] \
-             --xcargs "SWIFT_VERSION=5.1" \
-             --code_coverage \
-             --output_directory output/scan
-            
-      - name:  Unit Tests, using Swift 5.2
-        run: |
-           fastlane scan \
-             --device ["iPhone 7", "iPhone XS"] \
-             --xcargs "SWIFT_VERSION=5.2" \
-             --code_coverage \
-             --output_directory output/scan 
+  
