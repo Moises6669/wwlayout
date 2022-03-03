@@ -21,7 +21,7 @@ jobs:
           ssh-key: ${{ secrets.ssh_ww }}
           
       - name: Install dependencies in Gemfile
-        run: gem install fastlane
+        run: bundle install 
       
       - name:  Unit Tests, using Swift 4.0
         run: |
