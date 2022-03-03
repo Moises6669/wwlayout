@@ -39,3 +39,26 @@ jobs:
              --code_coverage \
              --output_directory output/scan
 
+      - name:  Unit Tests, using Swift 5.0
+        run: |
+         fastlane scan \
+           --device "iPhone X" \
+           --xcargs "SWIFT_VERSION=5.0" \
+           --code_coverage \
+           --output_directory output/scan
+      
+      - name:  Unit Tests, using Swift 5.1
+        run: |
+           fastlane scan \
+             --device ["iPhone 6", "iPhone 11"] \
+             --xcargs "SWIFT_VERSION=5.1" \
+             --code_coverage \
+             --output_directory output/scan
+            
+      - name:  Unit Tests, using Swift 5.2
+        run: |
+           fastlane scan \
+             --device ["iPhone 7", "iPhone XS"] \
+             --xcargs "SWIFT_VERSION=5.2" \
+             --code_coverage \
+             --output_directory output/scan 
