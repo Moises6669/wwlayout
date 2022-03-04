@@ -13,19 +13,13 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2  
-        with: 
-          repository: "ww-tech/wwlayout"
-          ref: develop
-          ssh-key: ${{ secrets.ssh_ww }}
-          
+       
       - name: Install dependencies in Gemfile
         run: gem install fastlane
       
       - name:  Unit Tests, using Swift ${{ matrix.swift-version }}
         run: |
           fastlane scan \
-            --device "iPhone 11" \
-            --code_coverage \
-            --output_directory output/scan 
+            --device ["iPhone SE","iPhone 8","iPhone 11","iPhone XS"] \
         env:
          DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode-version }}.app
