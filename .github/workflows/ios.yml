@@ -24,7 +24,7 @@ jobs:
       - name:  Unit Tests, using Swift ${{ matrix.swift-version }}
         run: |
           fastlane scan \
-            --device "iPhone SE" \
+            --device "iPhone 11" \
             --code_coverage \
             --output_directory output/scan 
         env:
