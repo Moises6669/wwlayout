@@ -11,13 +11,18 @@ jobs:
       xcode-version: [13.2, 12.5.1]
     
     steps:
-      - name: checkout
-        uses: actions/checkout@v2  
-       
-      - name: Install dependencies in Gemfile
-        run: gem install fastlane
+#       - name: checkout
+#         uses: actions/checkout@v2  
       
-      - name:  Unit Tests, using Swift ${{ matrix.swift-version }}
-        run: fastlane scan --devices "iPhone 8","iPhone 11"
-        env:
-         DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode-version }}.app
+#       - name: Pod update
+#         run: bundle update fastlane         gem install fastlane
+
+        
+      - name: Install dependencies in Gemfile
+        run: |
+         xcbeautify --version
+      
+#       - name:  Unit Tests, using Swift ${{ matrix.swift-version }}
+#         run: fastlane scan --devices "iPhone 8","iPhone 11"
+#         env:
+#          DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode-version }}.app
